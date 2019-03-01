@@ -5,11 +5,11 @@ using UnityEngine;
 namespace HoloLensCameraModule
 {
     /// <summary>
-    /// 投げ込まれた食事と世界座標の対応をとって、
+    /// 投げ込まれた物体と世界座標の対応をとって、
     /// </summary>
     public class DataViewPanelManager : MonoBehaviour
     {
-        [SerializeField, Tooltip("食事の上に表示するためのpanelのprefab")]
+        [SerializeField, Tooltip("物体の上に表示するためのpanelのprefab")]
         public GameObject PropertyPanelObj;
 
         /// <summary>
@@ -43,13 +43,13 @@ namespace HoloLensCameraModule
                 })
                 .FirstOrDefault();
 
-                //同一の食事があった場合
+                //同一の物体があった場合
                 if (worldSpaceData != null)
                 {
                     var panel = _drawingDataObjDic[worldSpaceData];
                     panel.DetectedObjectData3D = detectedObjectData3D;
                 }
-                else//新しい食事の場合。
+                else//新しい物体の場合。
                 {
                     GameObject newPropertyView = Instantiate(PropertyPanelObj);
                     DataViewPanel viewPanel = newPropertyView.GetComponent<DataViewPanel>();

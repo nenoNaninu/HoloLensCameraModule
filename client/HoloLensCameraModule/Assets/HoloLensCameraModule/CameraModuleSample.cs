@@ -25,7 +25,7 @@ namespace HoloLensCameraModule
         private IObjectDetector<DetectedObjectData2D> _objectDetector;
 
         /// <summary>
-        /// 食事のオブジェクトの上にプロパティを表示する。
+        /// オブジェクトの上にプロパティを表示する。
         /// そのプロパティが表示されているGameObjectの参照を握っておく。
         /// </summary>
         private List<GameObject> _propertyViewList = new List<GameObject>();
@@ -55,10 +55,7 @@ namespace HoloLensCameraModule
         }
 
         /// <summary>
-        /// 5秒ごとに発火される
-        /// 5秒ごとにカロリーと食事の位置を認識するので、その情報を表示する。
-        /// 表示するとき、前のフレームに残っている連中と比較して、距離が5cm以内なら同じ食事と判断して、食事の表示を書き換える。
-        /// 前のフレームに残っている
+        /// 一定間隔で発火
         /// </summary>
         public void TakePhoto()
         {
@@ -75,7 +72,7 @@ namespace HoloLensCameraModule
                     Debug.Log($"handPosition on image : {x}, {y}");
                 }
 
-                //今画面に映っている食事の位置が取得できたやつらを保存。
+                //今画面に映っている物体の位置が取得できたやつらを保存。
                 foreach (var objectData2D in objectData2DList)
                 {
                     Vector3 worldPos;
